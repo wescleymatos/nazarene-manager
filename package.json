@@ -4,7 +4,12 @@
   "description": "Para acessar o projeto no heroku acesse o link:\r [Projeto Nazarene Manager](https://fullstack-academy.herokuapp.com/)",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "8.x",
+    "npm": "5.x"
   },
   "repository": {
     "type": "git",
@@ -20,6 +25,7 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "mongodb": "^2.2.33"
   },
