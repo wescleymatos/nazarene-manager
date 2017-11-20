@@ -25,6 +25,10 @@ app.get('/login', (req, res) => {
   res.render('accounts/login');
 });
 
+app.get('/', (req, res) => {
+  res.render('home');
+});
+
 MongoClient.connect(mongoUri, (err, db) => {
   if (err) {
     return;
