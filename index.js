@@ -29,11 +29,20 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-MongoClient.connect(mongoUri, (err, db) => {
-  if (err) {
-    return;
-  }
+// MongoClient.connect(mongoUri, (err, db) => {
+//   if (err) {
+//     return;
+//   }
+//
+//   app.db = db;
+//   app.listen(app.get('port'), () => 'Server running...');
+// });
 
-  app.db = db;
-  app.listen(app.get('port'), () => 'Server running...');
+MongoClient.connect(mongoUri, (err, db) => {
+    if (err) {
+        return;
+    }
+
+    app.db = db;
+    app.listen(app.get('port'), () => console.log('Server running...'));
 });
