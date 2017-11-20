@@ -21,9 +21,9 @@ app.set('views', path.join(__dirname, 'views'));
 //tipo de template
 app.set('view engine', 'ejs');
 
-// app.get('/login', (req, res) => {
-//   res.render('accounts/login');
-// });
+app.get('/login', (req, res) => {
+  res.render('accounts/login');
+});
 
 app.get('/', (req, res) => {
   res.render('home');
