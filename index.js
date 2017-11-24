@@ -1,8 +1,19 @@
 require('dotenv').config();
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+  dialect: 'mysql',
+  host: process.env.DB_HOST
+});
 
-const MongoClient = require('mongodb').MongoClient;
-const ObjectID = require('mongodb').ObjectID;
-const mongoUri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-shard-00-00-pnun5.mongodb.net:27017,cluster0-shard-00-01-pnun5.mongodb.net:27017,cluster0-shard-00-02-pnun5.mongodb.net:27017/${process.env.DB_NAME}?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin`;
+const User = sequelize.define('users', {});
+
+User.findAll({
+  attributes : ['id', 'name', 'email', 'active', 'kind']
+}).then(users => {
+  console.log(users);
+})
+
+sequelize.authenticate().then(() => console.log('connected'));
 
 const path = require('path');
 const express = require('express');
@@ -29,11 +40,4 @@ app.get('/', (req, res) => {
   res.render('accounts/login');
 });
 
-MongoClient.connect(mongoUri, (err, db) => {
-    if (err) {
-        return;
-    }
-
-    app.db = db;
-    app.listen(app.get('port'), () => console.log('Server running...'));
-});
+app.listen(app.get('port'), () => console.log('Server running...'));
