@@ -11,6 +11,9 @@
     },
     "DB_USER": {
       "required": true
+    },
+    "DB_HOST": {
+      "required": true
     }
   },
   "formation": {
