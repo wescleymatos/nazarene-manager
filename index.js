@@ -6,8 +6,8 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 
-//const user = require('./src/AuthPermission/User');
 const accounts = require('./routes/accounts');
+const members = require('./routes/members');
 
 app.set('port', (process.env.PORT || port));
 
@@ -20,5 +20,6 @@ app.set('view engine', 'ejs');
 //Routes
 app.use('/', accounts);
 app.use('/accounts', accounts);
+app.use('/members', members);
 
-app.listen(app.get('port'), () => console.log('Server running...'));
+app.listen(app.get('port'), () => 'Server running...');

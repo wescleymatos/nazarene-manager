@@ -1,0 +1,119 @@
+<div class="box box-primary">
+    <form method="POST" action="/church/members/edit/">
+        <input type="hidden" name="id" value="">
+        <div class="box-body">
+            <fieldset>
+                <legend>Dados</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" class="control-label">Nome <span class="field-required">*</span></label>
+                            <input class="form-control" type="text" name="nome" value="" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">Sexo <span class="field-required">*</span></label>
+                            <select class="form-control" name="sexo" required>
+                                <option value="F">Feminino</option>
+                                <option value="M">Masculino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">Status <span class="field-required">*</span></label>
+                            <select class="form-control" name="status" required>
+                                <option value="ATI">Ativo</option>
+                                <option value="INA">Inativo</option>
+                                <option value="CON">Congregado</option>
+                                <option value="ASS">Associado</option>
+                                <option value="ARQ">Arquivado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="" class="control-label">Data de nascimento</label>
+                            <input class="form-control" type="text" name="dataNascimento" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" value="">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="" class="control-label">Data de conversão</label>
+                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dataConversao" value="">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="" class="control-label">Data de batismo</label>
+                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dataBatismo" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <input class="form-control" type="email" name="email" value="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Facebook</label>
+                            <input class="form-control" type="text" name="facebook" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label">Observação</label>
+                        <textarea class="form-control" rows="3" name="observacao"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Endereço</legend>
+                <div id="address">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>CEP</label>
+                            <input id="cep" placeholder="xxxxx-xxx" pattern="[0-9]{5}-[0-9]{3}" name="cep" value="" maxlength="9" class="form-control" type="text">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Cidade</label>
+                            <input id="localidade" name="localidade" class="form-control" value="" type="text">
+                        </div>
+                        <div class="col-md-1">
+                            <label>UF</label>
+                            <input id="uf" name="uf" class="form-control" value="" type="text">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Bairro</label>
+                            <input id="bairro" name="bairro" value="" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Logradouro</label>
+                            <input id="logradouro" name="logradouro" value="" class="form-control" type="text">
+                        </div>
+                        <div class="col-md-8">
+                            <label>Complemento</label>
+                            <input id="complemento" name="complemento" class="form-control" value="" type="text">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="clearfix"></div>
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+            <a href="javascript:history.back();" class="btn btn-default">Cancelar</a>
+        </div>
+    </form>
+</div>
