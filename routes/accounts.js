@@ -3,7 +3,7 @@ const accountsController = require('../controllers/AccountsController');
 const router = express.Router();
 
 router.get('/', accountsController.index);
-router.get('/accounts', accountsController.index);
-router.post('/accounts', accountsController.authenticate);
+router.post('/', accountsController.authenticate);
+router.get('/logout', accountsController.logout);
 
 module.exports = router;

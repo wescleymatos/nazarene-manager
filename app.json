@@ -14,6 +14,9 @@
     },
     "DB_HOST": {
       "required": true
+    },
+    "ELMAH_ID": {
+      "required": true
     }
   },
   "formation": {

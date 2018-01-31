@@ -1,24 +1,173 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Meu Dinheiro</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
-</head>
-<body>
-    <div class="container">
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/calculadora">Calculadora</a></li>
-                    <li><a href="/operacoes">Operações</a></li>
-                    <li><a href="/nova-operacao">Nova Operação</a></li>
-                </ul>
-            </nav>
-            <h3 class="text-muted">Meu Dinheiro</h3>
-        </div>
-        <div class="jumbotron">
-            <h1>Meu Dinheiro</h1>
-            <p class="lead">Sistema para cálculo de juros</p>
-        </div>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Sistema de Gerenciamento - Igreja do Nazareno</title>
+        <!--Import Google Icon Font-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,700,300italic,400italic,600italic" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.min.css"  media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style type="text/css">
+            .field-required {
+                color: #EA4335;
+            }
+        </style>
+    </head>
+    <body data-dispatch="<%= locals.dispatch || '' %>" class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="#" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>I</b>N</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>Ig. Nazareno</b></span>
+                </a>
+
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Notifications: style can be found in dropdown.less -->
+                            <li class="dropdown messages-menu">
+                                <a aria-expanded="true" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="label label-success">4</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 10 notifications</li>
+                                    <li>
+                                        <!-- inner menu: contains the actual data -->
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="footer"><a href="#">View all</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="/images/user2-160x160.jpg" class="user-image" alt="User Image">
+                                    <span class="hidden-xs"><%= locals.user.name %></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                        <p>
+                                            <%= locals.user.email %>
+                                            <small><%= locals.user.name %></small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="/users/profile/<%= locals.user.id %>" class="btn btn-default btn-flat">Meu Perfil</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="/accounts/logout" class="btn btn-default btn-flat">Sair</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Pesquisar...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="header">MENU DE NAVEGAÇÃO</li>
+                        <li class="active">
+                            <a href="/dashboard">
+                                <i class="fa fa-home"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="/church/members">
+                                <i class="fa fa-user-o"></i> <span>Membresia</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#">
+                                <i class="fa fa-users"></i> <span>Grupos</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="/church/financials">
+                                <i class="fa fa-calculator"></i> <span>Financeiro</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#">
+                                <i class="fa fa-cubes"></i> <span>Patrimônio</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#">
+                                <i class="fa fa-bar-chart"></i> <span>Relatórios</span>
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a href="/district/churches">
+                                <i class="fa fa-university"></i> <span>Igrejas</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#">
+                                <i class="fa fa-user-circle-o"></i> <span>Pastores</span>
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a href="/admin/users">
+                                <i class="fa fa-user"></i> <span>Usuários</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <h1>
+                        <%= locals.pageTitle %>
+                    </h1>
+                    <!-- <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol> -->
+                </section>
+                <section class="content">

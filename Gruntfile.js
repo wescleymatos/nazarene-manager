@@ -39,7 +39,7 @@ module.exports = function(grunt) {
           'node_modules/jquery/dist/jquery.min.js',
           'node_modules/bootstrap/dist/js/bootstrap.min.js',
           'node_modules/admin-lte/plugins/fastclick/fastclick.min.js',
-          'node_modules/admin-lte/dist/js/app.min.js',
+          'node_modules/admin-lte/dist/js/adminlte.js',
           'node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js',
           'node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js',
           'node_modules/sweetalert/dist/sweetalert.min.js',
@@ -86,7 +86,6 @@ module.exports = function(grunt) {
     processhtml: {
       dist: {
         files: {
-          //'public/templates/layout.html': ['public/templates/layout.html'],
           'views/partials/footer.ejs': ['views/partials/footer.ejs'],
         }
       }
@@ -109,7 +108,7 @@ module.exports = function(grunt) {
           collapseWhitespace: true
         },
         files: {
-          //'views/accounts/login.html': 'views/accounts/login.html'
+          'views/accounts/login.ejs': 'views/accounts/login.ejs'
         }
       }
     },

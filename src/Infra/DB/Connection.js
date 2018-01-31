@@ -5,7 +5,11 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 });
 
 const UserMap = sequelize.import('./Map/UserMap.js');
+const ChurchMap = sequelize.import('./Map/ChurchMap.js');
+
+UserMap.belongsTo(ChurchMap, {foreignKey: 'church_id'});
 
 module.exports = {
-  UserMap
+  UserMap,
+  ChurchMap
 };
