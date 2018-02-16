@@ -1,5 +1,6 @@
 const UserService = require('../src/AuthPermission/Services/UserService');
 const UserKindEnum = require('../src/AuthPermission/Enums/UserKindEnum');
+const EmailService = require('../src/Infra/Services/EmailService');
 
 const index = (req, res) => {
   res.setHeader('Cache-Control', 'public, max-age=86400');
@@ -31,8 +32,30 @@ const logout = (req, res) => {
   res.redirect('/accounts');
 };
 
+const reset = (req, res) => {
+  res.render('accounts/reset');
+};
+
+const resetPassword = async (req, res) => {
+  try {
+    const user = await UserService.getByEmail(req.body.email);
+
+    if (user === null) throw new Error('User invalid.');
+
+    const newPassword = Math.random().toString(36).slice(-10);
+    await UserService.changePassword(user.id, newPassword, newPassword);
+    console.log(newPassword);
+    EmailService.send(newPassword);
+    res.redirect('/accounts');
+  } catch (e) {
+    res.render('accounts/login', {msg: e.message});
+  }
+};
+
 module.exports = {
   index,
   authenticate,
-  logout
+  logout,
+  reset,
+  resetPassword
 };

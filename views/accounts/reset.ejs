@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Sistema de Gerenciamento - Igreja do Nazareno</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="/css/style.min.css"  media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body class="login-page skin-blue-light">
+
+        <div style="position: relative;" class="login-box">
+            <div class="login-box-body">
+                <div class="login-logo">
+                    <img src="../images/logo_naza.png" width="300px">
+                </div><!-- /.login-logo -->
+                <hr />
+                <form class="form-signin" method="POST" action="/accounts/reset">
+                    <div class="form-group has-feedback">
+                        <input type="email" class="form-control" placeholder="Email" name="email" required>
+                        <span class="fa fa-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button class="btn btn-primary btn-block btn-flat" type="submit">Enviar</button>
+                        </div>
+                    </div>
+                    <br />
+                    <a href="/">Voltar</a>
+                </form>
+            </div><!-- /.login-box-body -->
+        </div><!-- /.login-box -->
+        <hr />
+    </body>
+</html>

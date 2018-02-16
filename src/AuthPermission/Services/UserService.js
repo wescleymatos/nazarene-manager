@@ -57,6 +57,12 @@ const getById = async (id) => {
   return user;
 };
 
+const getByEmail = async (email) => {
+  const user = await UserRepository.getByEmail(email);
+
+  return user;
+};
+
 const update = async (user) => {
   return UserRepository
     .update(user)
@@ -74,6 +80,7 @@ module.exports = {
   register,
   getAll,
   getById,
+  getByEmail,
   update,
   remove,
   changePassword

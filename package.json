@@ -60,6 +60,7 @@
     "handlebars": "^4.0.10",
     "inputmask": "^3.3.8",
     "jquery": "^3.2.1",
+    "mailgun.js": "^2.0.1",
     "mysql2": "^1.5.1",
     "sequelize": "^4.22.15",
     "sweetalert": "^1.1.3"

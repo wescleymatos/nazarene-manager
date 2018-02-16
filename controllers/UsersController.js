@@ -86,8 +86,7 @@ const changePassword = async (req, res) => {
     const {id, email, senhaAtual, senha, confirmaSenha} = req.body;
     const user = await UserService.authenticate(email, senhaAtual);
 
-    if (user === null)
-      throw new Error('User invalid.');
+    if (user === null) throw new Error('User invalid.');
 
     await UserService.changePassword(id, senha, confirmaSenha);
 
