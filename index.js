@@ -6,6 +6,7 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const compression = require('compression');
 
 const authMiddle = require('./routes/middlewares/auth');
 const accounts = require('./routes/accounts');
@@ -17,6 +18,7 @@ app.set('port', (process.env.PORT || port));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(compression());
 app.use(session({
   secret: 'nazarene-manager',
   cookie: {

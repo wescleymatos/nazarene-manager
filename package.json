@@ -39,6 +39,7 @@
     "bootstrap": "^3.3.7",
     "bootstrap-table": "^1.11.2",
     "chartist": "^0.11.0",
+    "compression": "^1.7.1",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
