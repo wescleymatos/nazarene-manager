@@ -18,6 +18,15 @@ App.Config = {
     CON: 'Congregado',
     ASS: 'Associado',
     ARQ: 'Arquivado'
+  },
+  swalConfig: {
+    title: 'Apagar este registro?',
+    text: '',
+    showCancelButton: true,
+    confirmButtonColor: '#F44336',
+    confirmButtonText: 'APAGAR',
+    cancelButtonText: 'CANCELAR',
+    closeOnConfirm: false
   }
 };
 

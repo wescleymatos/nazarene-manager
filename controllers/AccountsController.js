@@ -12,7 +12,7 @@ const authenticate = async (req, res) => {
     const {email, senha} = req.body;
     const user = await UserService.authenticate(email, senha);
 
-    if (user === null) throw new Error('User invalid.');
+    if (user === null || user.active === 0) throw new Error('User invalid.');
 
     let pathUrl = (user.kind === UserKindEnum.Admin) ? '/admin'
                   : (user.kind === UserKindEnum.District) ? '/district'

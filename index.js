@@ -34,10 +34,12 @@ app.use(authMiddle.getUserLogged);
 //Routes
 app.use('/', accounts);
 app.use('/accounts', accounts);
-app.use('/admin/dashboard', dashboard);
-app.use('/church/dashboard', dashboard);
-app.use('/admin/users', users);
 app.use('/users', users);
-app.use('/members', members);
+
+app.use('/admin/dashboard', dashboard);
+app.use('/admin/users', users);
+
+app.use('/church/dashboard', dashboard);
+app.use('/church/members', members);
 
 app.listen(app.get('port'), () => 'Server running...');

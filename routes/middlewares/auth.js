@@ -28,6 +28,21 @@ exports.isDistrict = (req, res, next) => {
   }
 };
 
+exports.isChurch = (req, res, next) => {
+  const logged = req.session.user;
+  const path = req.baseUrl;
+
+  if (logged) {
+    if (/(church)/i.test(path) && logged.kind === 'I') {
+      next();
+    } else {
+      res.redirect('/error/notauthorize');
+    }
+  } else {
+    res.redirect('/accounts');
+  }
+};
+
 exports.isAuthorize = (req, res, next) => {
   const logged = req.session.user;
 

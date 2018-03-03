@@ -1,3 +1,5 @@
+<%- include('../../partials/header.ejs'); %>
+
 <div class="box box-primary">
     <form method="POST" action="/church/members/add">
         <div class="box-body">
@@ -7,19 +9,10 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Nome <span class="field-required">*</span></label>
-                            <input class="form-control" type="text" name="nome" required>
+                            <input class="form-control" type="text" name="name" required>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="" class="control-label">Sexo <span class="field-required">*</span></label>
-                            <select class="form-control" name="sexo" required>
-                                <option value="F">Feminino</option>
-                                <option value="M">Masculino</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group">
                             <label for="" class="control-label">Status <span class="field-required">*</span></label>
                             <select class="form-control" name="status" required>
@@ -27,28 +20,47 @@
                                 <option value="INA">Inativo</option>
                                 <option value="CON">Congregado</option>
                                 <option value="ASS">Associado</option>
-                                <option value="ARQ">Arquivado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="" class="control-label">Forma de entrada <span class="field-required">*</span></label>
+                            <select class="form-control" name="statusEntry" required>
+                                <option value="EPF">Entrada profissão de fé</option>
+                                <option value="ETO">Entrada transf. outra denominação</option>
+                                <option value="ETN">Entrada transf. igreja do nazareno</option>
+                                <option value="ECO">Entrada congregado</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">Sexo <span class="field-required">*</span></label>
+                            <select class="form-control" name="gender" required>
+                                <option value="F">Feminino</option>
+                                <option value="M">Masculino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="" class="control-label">Data de nascimento</label>
-                            <input class="form-control" type="text" name="dataNascimento" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'">
+                            <input class="form-control" type="text" name="birthday" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'">
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="" class="control-label">Data de conversão</label>
-                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dataConversao">
+                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dateCoversion">
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="" class="control-label">Data de batismo</label>
-                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dataBatismo">
+                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dateBaptism">
                         </div>
                     </div>
                 </div>
@@ -62,14 +74,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Facebook</label>
-                            <input class="form-control" type="text" name="facebook">
+                            <input class="form-control" type="text" name="linkFacebook">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <label class="control-label">Observação</label>
-                        <textarea class="form-control" rows="3" name="observacao"></textarea>
+                        <textarea class="form-control" rows="3" name="observation"></textarea>
                     </div>
                 </div>
             </fieldset>
@@ -86,3 +98,5 @@
         </div>
     </form>
 </div>
+
+<%- include('../../partials/footer'); %>

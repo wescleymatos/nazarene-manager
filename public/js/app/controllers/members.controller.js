@@ -1,43 +1,62 @@
-( (window, document, Controller, undefined) => {
+( (window, document, Controller, Config, $, swal, CepView) => {
 
-    'use strict';
+  'use strict';
 
-    const MembersController = () => {
-        let table = $('table');
+  const MembersController = () => {
 
-        const index = () => {
-            table.on('edit-row', function (e, data) {
-                window.location.href = App.Config.getUrl($(this).attr('data-controller') + '/' + data.id);
+    let table = $('#table-list');
+
+    const index = () => {
+      table.on('delete-row', function (e, data) {
+        swal(Config.swalConfig, function(isConfirm) {
+          if (isConfirm) {
+            let id = data.id;
+            let jQueryPromise = $.ajax(
+              Config.getUrl(`church/members/delete/${id}`)
+            );
+
+            Promise.resolve(jQueryPromise).then(function () {
+              table.bootstrapTable('remove', {field: 'id', values: [id]});
+              swal('Apagado!', 'Registro apagado com sucesso.', 'success');
+            }).catch(function () {
+              swal('', 'Não foi possível apagar o registro.', 'error');
             });
-        };
+          }
+        });
+      });
 
-        const add = () => {
-            let view = new CepView();
-            view.render();
-        };
-
-        const edit = () => {
-            let view = new CepView();
-
-            $('[data-btn-action="show-member-history"]').on('click', function () {
-                if ($('#member-box-form').hasClass('col-md-12')) {
-                    $('#member-box-form').addClass('col-md-6').removeClass('col-md-12');
-                    $('#member-box-timelime').removeClass('hidden');
-                } else {
-                    $('#member-box-form').removeClass('col-md-6').addClass('col-md-12');
-                    $('#member-box-timelime').addClass('hidden');
-                }
-            });
-        };
-
-        return {
-            Index: index,
-            Add: add,
-            Edit: edit
-        };
-
+      table.on('edit-row', function (e, data) {
+        window.location.href = Config.getUrl($(this).attr('data-controller') + '/' + data.id);
+      });
     };
 
-    Controller.Members = MembersController();
+    const add = () => {
+      let view = new CepView();
+      view.render();
+    };
 
-})(window, document, App.Controller);
+    const edit = () => {
+      new CepView();
+
+      $('[data-btn-action="show-member-history"]').on('click', function () {
+        if ($('#member-box-form').hasClass('col-md-12')) {
+          $('#member-box-form').addClass('col-md-6').removeClass('col-md-12');
+          $('#member-box-timelime').removeClass('hidden');
+        } else {
+          $('#member-box-form').removeClass('col-md-6').addClass('col-md-12');
+          $('#member-box-timelime').addClass('hidden');
+        }
+      });
+    };
+
+    return {
+      Index: index,
+      Add: add,
+      Edit: edit
+    };
+
+  };
+
+  Controller.Members = MembersController();
+
+})(window, document, App.Controller, App.Config, $, swal, CepView);

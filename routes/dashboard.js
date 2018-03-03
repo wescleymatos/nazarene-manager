@@ -3,6 +3,6 @@ const dashboardController = require('../controllers/DashboardController');
 const auth = require('./middlewares/auth');
 const router = express.Router();
 
-router.get('/', auth.isAdmin, dashboardController.index);
+router.get('/', auth.isAuthorize, dashboardController.index);
 
 module.exports = router;

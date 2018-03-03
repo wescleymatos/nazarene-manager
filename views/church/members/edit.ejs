@@ -1,6 +1,8 @@
+<%- include('../../partials/header.ejs'); %>
+
 <div class="box box-primary">
-    <form method="POST" action="/church/members/edit/">
-        <input type="hidden" name="id" value="">
+    <form method="POST" action="/church/members/edit/<%= member.id %>">
+        <input type="hidden" name="id" value="<%= member.id %>">
         <div class="box-body">
             <fieldset>
                 <legend>Dados</legend>
@@ -8,15 +10,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Nome <span class="field-required">*</span></label>
-                            <input class="form-control" type="text" name="nome" value="" required>
+                            <input class="form-control" type="text" name="name" value="<%= member.name %>" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="" class="control-label">Sexo <span class="field-required">*</span></label>
-                            <select class="form-control" name="sexo" required>
-                                <option value="F">Feminino</option>
-                                <option value="M">Masculino</option>
+                            <select class="form-control" name="gender" required>
+                                <option <%= member.gender === 'F' ? 'selected' : '' %> value="F">Feminino</option>
+                                <option <%= member.gender === 'M' ? 'selected' : '' %> value="M">Masculino</option>
                             </select>
                         </div>
                     </div>
@@ -24,11 +26,10 @@
                         <div class="form-group">
                             <label for="" class="control-label">Status <span class="field-required">*</span></label>
                             <select class="form-control" name="status" required>
-                                <option value="ATI">Ativo</option>
-                                <option value="INA">Inativo</option>
-                                <option value="CON">Congregado</option>
-                                <option value="ASS">Associado</option>
-                                <option value="ARQ">Arquivado</option>
+                                <option <%= member.status === 'ATI' ? 'selected' : '' %> value="ATI">Ativo</option>
+                                <option <%= member.status === 'INA' ? 'selected' : '' %> value="INA">Inativo</option>
+                                <option <%= member.status === 'CON' ? 'selected' : '' %> value="CON">Congregado</option>
+                                <option <%= member.status === 'ASS' ? 'selected' : '' %> value="ASS">Associado</option>
                             </select>
                         </div>
                     </div>
@@ -37,19 +38,19 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="control-label">Data de nascimento</label>
-                            <input class="form-control" type="text" name="dataNascimento" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" value="">
+                            <input class="form-control" type="text" name="birthday" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" value="<%= member.birthday %>">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="control-label">Data de conversão</label>
-                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dataConversao" value="">
+                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dateCoversion" value="<%= member.dateCoversion %>">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="control-label">Data de batismo</label>
-                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dataBatismo" value="">
+                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dateBaptism" value="<%= member.dateBaptism %>">
                         </div>
                     </div>
                 </div>
@@ -57,20 +58,20 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input class="form-control" type="email" name="email" value="">
+                            <input class="form-control" type="email" name="email" value="<%= member.email %>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Facebook</label>
-                            <input class="form-control" type="text" name="facebook" value="">
+                            <input class="form-control" type="text" name="linkFacebook" value="<%= member.linkFacebook %>">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <label class="control-label">Observação</label>
-                        <textarea class="form-control" rows="3" name="observacao"></textarea>
+                        <textarea class="form-control" rows="3" name="observation"><%= member.observation %></textarea>
                     </div>
                 </div>
             </fieldset>
@@ -81,30 +82,30 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label>CEP</label>
-                            <input id="cep" placeholder="xxxxx-xxx" pattern="[0-9]{5}-[0-9]{3}" name="cep" value="" maxlength="9" class="form-control" type="text">
+                            <input id="cep" placeholder="xxxxxxxx" pattern="[0-9]{5}[0-9]{3}" name="zipCode" value="<%= member.zipCode %>" maxlength="8" class="form-control" type="text">
                         </div>
                         <div class="col-md-4">
                             <label>Cidade</label>
-                            <input id="localidade" name="localidade" class="form-control" value="" type="text">
+                            <input id="localidade" name="city" class="form-control" value="<%= member.city %>" type="text">
                         </div>
                         <div class="col-md-1">
                             <label>UF</label>
-                            <input id="uf" name="uf" class="form-control" value="" type="text">
+                            <input id="uf" name="state" class="form-control" value="<%= member.state %>" type="text">
                         </div>
                         <div class="col-md-4">
                             <label>Bairro</label>
-                            <input id="bairro" name="bairro" value="" class="form-control" type="text">
+                            <input id="bairro" name="neighborhood" value="<%= member.neighborhood %>" class="form-control" type="text">
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-4">
                             <label>Logradouro</label>
-                            <input id="logradouro" name="logradouro" value="" class="form-control" type="text">
+                            <input id="logradouro" name="publicPlace" value="<%= member.publicPlace %>" class="form-control" type="text">
                         </div>
                         <div class="col-md-8">
                             <label>Complemento</label>
-                            <input id="complemento" name="complemento" class="form-control" value="" type="text">
+                            <input id="complemento" name="complement" class="form-control" value="<%= member.complement %>" type="text">
                         </div>
                     </div>
                 </div>
@@ -117,3 +118,5 @@
         </div>
     </form>
 </div>
+
+<%- include('../../partials/footer'); %>

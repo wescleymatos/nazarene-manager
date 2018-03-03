@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "nodemon": "./node_modules/.bin/nodemon index.js",
+    "nodemon": "./node_modules/.bin/nodemon --ignore 'public/' index.js",
     "test": "./node_modules/.bin/mocha tests/**/*test.js --reporter spec",
     "postinstall": "./node_modules/.bin/grunt build",
     "grunt": "./node_modules/.bin/grunt",
