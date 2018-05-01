@@ -1,0 +1,16 @@
+<%- include('../../partials/header.ejs'); %>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <form method="POST" action="/church/transfers/add/<%= member.id %>">
+                <input type="hidden" name="id" value="<%= member.id %>">
+                <div class="box-body">
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer'); %>

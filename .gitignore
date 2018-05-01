@@ -63,7 +63,7 @@ typings/
 .env
 
 #node
-package-lock.json
+#package-lock.json
 
 *.min.js
 

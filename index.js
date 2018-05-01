@@ -13,6 +13,7 @@ const accounts = require('./routes/accounts');
 const dashboard = require('./routes/dashboard');
 const users = require('./routes/users');
 const members = require('./routes/members');
+const transfers = require('./routes/transfers');
 
 app.set('port', (process.env.PORT || port));
 app.set('views', path.join(__dirname, 'views'));
@@ -41,5 +42,6 @@ app.use('/admin/users', users);
 
 app.use('/church/dashboard', dashboard);
 app.use('/church/members', members);
+app.use('/church/transfers', transfers);
 
 app.listen(app.get('port'), () => 'Server running...');

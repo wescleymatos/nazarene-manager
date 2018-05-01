@@ -3,9 +3,28 @@
 <div class="box box-primary">
     <form method="POST" action="/church/members/edit/<%= member.id %>">
         <input type="hidden" name="id" value="<%= member.id %>">
+        <div class="box-header with-border">
+            <div class="box-title pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success">Transferir membro</button>
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul id="btn-show-modal-transferencia" class="dropdown-menu">
+                        <li>
+                            <a data-to="NAZARENE" data-church="<%= member.churchId %>" data-member="<%= member.id %>" data-url="/church/transfers" href="#">Outra Nazareno</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a data-to="OTHER" data-member="<%= member.id %>" data-url="/church/transfers" href="#">Outra denominação</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="box-body">
             <fieldset>
-                <legend>Dados</legend>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -117,6 +136,25 @@
             <a href="javascript:history.back();" class="btn btn-default">Cancelar</a>
         </div>
     </form>
+</div>
+
+<div id="modal-transferir" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Trasnferência para outra denominação</h4>
+            </div>
+            <div class="modal-body">
+                <p>Nome: </p>
+                <b><%= member.name %></b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                <button id="btn-transferir" data-loading-text="Transferindo..." type="button" class="btn btn-primary" autocomplete="off">Transferir</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <%- include('../../partials/footer'); %>

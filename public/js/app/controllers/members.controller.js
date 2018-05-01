@@ -4,7 +4,9 @@
 
   const MembersController = () => {
 
-    let table = $('#table-list');
+    const table = $('#table-list');
+    const btnTransferir = $('#btn-transferir');
+    const btnShowModalTransferencia = $('#btn-show-modal-transferencia');
 
     const index = () => {
       table.on('delete-row', function (e, data) {
@@ -38,14 +40,41 @@
     const edit = () => {
       new CepView();
 
-      $('[data-btn-action="show-member-history"]').on('click', function () {
-        if ($('#member-box-form').hasClass('col-md-12')) {
-          $('#member-box-form').addClass('col-md-6').removeClass('col-md-12');
-          $('#member-box-timelime').removeClass('hidden');
-        } else {
-          $('#member-box-form').removeClass('col-md-6').addClass('col-md-12');
-          $('#member-box-timelime').addClass('hidden');
-        }
+      const setAttrBtnTransferir = (to, memberId, churchId) => {
+        btnTransferir.attr('data-member', memberId);
+        btnTransferir.attr('data-church', churchId);
+        btnTransferir.attr('data-to', to);
+      };
+
+      btnShowModalTransferencia.on('click', 'a', function (e) {
+        let memberId = $(this).data('member');
+        let to = $(this).data('to');
+        let churchId = $(this).data('church');
+
+        setAttrBtnTransferir(to, memberId, churchId);
+
+        $('#modal-transferir').modal('show');
+
+        e.preventDefault();
+      });
+
+      btnTransferir.on('click', function () {
+        btnTransferir.button('loading');
+
+        let transfer = {
+          to: $(this).data('to'),
+          churchId: $(this).data('church'),
+          memberId: $(this).data('member')
+        };
+
+        let promise = $.post(Config.getUrl('church/transfers/add'), transfer);
+        promise.done(function(data) {
+          if (data.error === false) {
+            window.location.href = Config.getUrl('church/members');
+          }
+        }).fail(function(data) {
+          console.log(data);
+        });
       });
     };
 

@@ -1,11 +1,11 @@
 {
   "name": "nazarene-manager",
   "version": "1.0.0",
-  "description": "Para acessar o projeto no heroku acesse o link:\r [Projeto Nazarene Manager](https://fullstack-academy.herokuapp.com/)",
+  "description": "Para acessar o projeto no heroku acesse o link:\r [Projeto Nazarene Manager](https://nazarene-pro.herokuapp.com/)",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "nodemon": "./node_modules/.bin/nodemon --ignore 'public/' index.js",
+    "dev": "./node_modules/.bin/nodemon --ignore 'public/' index.js",
     "test": "./node_modules/.bin/mocha tests/**/*test.js --reporter spec",
     "postinstall": "./node_modules/.bin/grunt build",
     "grunt": "./node_modules/.bin/grunt",
@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IgrejaDoNazareno/nazarene-manager.git"
+    "url": "git+https://github.com/equipe-x/nazarene-manager.git"
   },
   "author": "Wescley Matos",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/IgrejaDoNazareno/nazarene-manager/issues"
+    "url": "https://github.com/equipe-x/nazarene-manager/issues"
   },
-  "homepage": "https://github.com/IgrejaDoNazareno/nazarene-manager#readme",
+  "homepage": "https://github.com/equipe-x/nazarene-manager#readme",
   "dependencies": {
     "admin-lte": "^2.3.11",
     "babel-cli": "^6.24.1",
@@ -62,6 +62,7 @@
     "inputmask": "^3.3.8",
     "jquery": "^3.2.1",
     "mailgun.js": "^2.0.1",
+    "moment": "^2.21.0",
     "mysql2": "^1.5.1",
     "sequelize": "^4.22.15",
     "sweetalert": "^1.1.3"

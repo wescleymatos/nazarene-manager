@@ -7,3 +7,10 @@ Para iniciar o projeto siga os passos abaixo:
 
   - Clone o projeto
   - rode o comando `npm install` para baixar as dependências
+
+Criar arquivo .env com as seguintes variáveis:
+ - DB_HOST
+ - DB_NAME
+ - DB_PASS
+ - DB_USER
+ - MAILGUN_API_KEY

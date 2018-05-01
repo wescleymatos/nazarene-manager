@@ -3,6 +3,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   dialect: 'mysql',
   host: process.env.DB_HOST
 });
+const Op = Sequelize.Op;
 
 const UserMap = sequelize.import('./Map/UserMap.js');
 const ChurchMap = sequelize.import('./Map/ChurchMap.js');
@@ -18,5 +19,6 @@ module.exports = {
   ChurchMap,
   MemberMap,
   HistoryMap,
-  db: sequelize
+  db: sequelize,
+  Op
 };
