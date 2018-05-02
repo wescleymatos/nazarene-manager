@@ -7,6 +7,7 @@
     const table = $('#table-list');
     const btnTransferir = $('#btn-transferir');
     const btnShowModalTransferencia = $('#btn-show-modal-transferencia');
+    const modalTransferencia = $('#modal-transferir');
 
     const index = () => {
       table.on('delete-row', function (e, data) {
@@ -53,7 +54,13 @@
 
         setAttrBtnTransferir(to, memberId, churchId);
 
-        $('#modal-transferir').modal('show');
+        if (to === 'NAZARENE') {
+          modalTransferencia.find('.modal-title').text('Trasnferência para outra Igreja do Nazareno');
+        } else {
+          modalTransferencia.find('.modal-title').text('Trasnferência para outra denominação');
+        }
+
+        modalTransferencia.modal('show');
 
         e.preventDefault();
       });
