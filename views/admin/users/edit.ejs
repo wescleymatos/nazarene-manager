@@ -1,0 +1,54 @@
+<%- include('../../partials/header.ejs'); %>
+
+<div class="box box-primary">
+    <form method="POST" action="/admin/users/edit/<%= user.id %>">
+        <div class="box-body">
+            <input type="hidden" name="id" value="">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="" class="control-label">Igreja</label>
+                        <select class="form-control" name="church_id">
+                            <% churches.forEach(item => { %>
+                                <option <%= item.id === user.churchId ? 'selected' : ''; %> value="<%= item.id %>"><%= item.name %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group is-empty">
+                        <label for="" class="control-label">Nome</label>
+                        <input class="form-control" type="text" name="nome" value="<%= user.name %>" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group is-empty">
+                        <label class="control-label">Email</label>
+                        <input class="form-control" type="email" name="email" value="<%= user.email %>" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Ativar</label>
+                        <select class="form-control" name="active">
+                            <option <%= user.active === 1 ? 'selected' : ''; %> value="1">Sim</option>
+                            <option <%= user.active === 0 ? 'selected' : ''; %> value="0">Não</option>
+                        </select>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+            <a href="javascript:history.back();" class="btn btn-default">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<%- include('../../partials/footer'); %>

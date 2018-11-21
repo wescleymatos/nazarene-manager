@@ -1,0 +1,71 @@
+<%- include('../partials/header.ejs'); %>
+
+<%= locals.msg || ''; %>
+
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">Meu perfil</h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label">Nome</label>
+                    <input class="form-control" disabled type="text" value="<%= locals.user.name %>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label">Email</label>
+                    <input class="form-control" disabled type="text" value="<%= locals.user.email %>">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label">Ativo</label>
+                    <input class="form-control" disabled type="text" value="<%= locals.user.active === 1 ? 'SIM' : 'NÃO' %>">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="POST" action="/users/changepassword/<%= locals.user.id %>" autocomplete="off">
+    <input type="hidden" name="email" value="<%= locals.user.email %>">
+    <input type="hidden" name="id" value="<%= locals.user.id %>">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Alterar senha</h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Senha atual</label>
+                        <input class="form-control" type="password" name="senhaAtual" required minlength="8">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Senha</label>
+                        <input class="form-control" type="password" name="senha" required minlength="8">
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Confirma senha</label>
+                        <input class="form-control" type="password" name="confirmaSenha" required minlength="8">
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+            <a href="javascript:history.back();" class="btn btn-default">Cancelar</a>
+        </div>
+    </div>
+</form>
+
+<%- include('../partials/footer'); %>

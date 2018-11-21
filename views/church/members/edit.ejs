@@ -1,0 +1,160 @@
+<%- include('../../partials/header.ejs'); %>
+
+<div class="box box-primary">
+    <form method="POST" action="/church/members/edit/<%= member.id %>">
+        <input type="hidden" name="id" value="<%= member.id %>">
+        <div class="box-header with-border">
+            <div class="box-title pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success">Transferir membro</button>
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul id="btn-show-modal-transferencia" class="dropdown-menu">
+                        <li>
+                            <a data-to="NAZARENE" data-church="<%= member.churchId %>" data-member="<%= member.id %>" data-url="/church/transfers" href="#">Outra Nazareno</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a data-to="OTHER" data-member="<%= member.id %>" data-url="/church/transfers" href="#">Outra denominação</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="box-body">
+            <fieldset>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" class="control-label">Nome <span class="field-required">*</span></label>
+                            <input class="form-control" type="text" name="name" value="<%= member.name %>" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">Sexo <span class="field-required">*</span></label>
+                            <select class="form-control" name="gender" required>
+                                <option <%= member.gender === 'F' ? 'selected' : '' %> value="F">Feminino</option>
+                                <option <%= member.gender === 'M' ? 'selected' : '' %> value="M">Masculino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">Status <span class="field-required">*</span></label>
+                            <select class="form-control" name="status" required>
+                                <option <%= member.status === 'ATI' ? 'selected' : '' %> value="ATI">Ativo</option>
+                                <option <%= member.status === 'INA' ? 'selected' : '' %> value="INA">Inativo</option>
+                                <option <%= member.status === 'CON' ? 'selected' : '' %> value="CON">Congregado</option>
+                                <option <%= member.status === 'ASS' ? 'selected' : '' %> value="ASS">Associado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="" class="control-label">Data de nascimento</label>
+                            <input class="form-control" type="text" name="birthday" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" value="<%= member.birthday %>">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="" class="control-label">Data de conversão</label>
+                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dateCoversion" value="<%= member.dateCoversion %>">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="" class="control-label">Data de batismo</label>
+                            <input class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" type="text" name="dateBaptism" value="<%= member.dateBaptism %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <input class="form-control" type="email" name="email" value="<%= member.email %>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Facebook</label>
+                            <input class="form-control" type="text" name="linkFacebook" value="<%= member.linkFacebook %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label">Observação</label>
+                        <textarea class="form-control" rows="3" name="observation"><%= member.observation %></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Endereço</legend>
+                <div id="address">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>CEP</label>
+                            <input id="cep" placeholder="xxxxxxxx" pattern="[0-9]{5}[0-9]{3}" name="zipCode" value="<%= member.zipCode %>" maxlength="8" class="form-control" type="text">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Cidade</label>
+                            <input id="localidade" name="city" class="form-control" value="<%= member.city %>" type="text">
+                        </div>
+                        <div class="col-md-1">
+                            <label>UF</label>
+                            <input id="uf" name="state" class="form-control" value="<%= member.state %>" type="text">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Bairro</label>
+                            <input id="bairro" name="neighborhood" value="<%= member.neighborhood %>" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Logradouro</label>
+                            <input id="logradouro" name="publicPlace" value="<%= member.publicPlace %>" class="form-control" type="text">
+                        </div>
+                        <div class="col-md-8">
+                            <label>Complemento</label>
+                            <input id="complemento" name="complement" class="form-control" value="<%= member.complement %>" type="text">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="clearfix"></div>
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+            <a href="javascript:history.back();" class="btn btn-default">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<div id="modal-transferir" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p>Nome: </p>
+                <b><%= member.name %></b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                <button id="btn-transferir" data-loading-text="Transferindo..." type="button" class="btn btn-primary" autocomplete="off">Transferir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer'); %>

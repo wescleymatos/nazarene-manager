@@ -1,0 +1,49 @@
+<%- include('../../partials/header.ejs'); %>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div id="toolbar" class="">
+                <div class="btn-group" role="group">
+                    <a href="/church/members/add" class="btn btn-default">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cog"></i>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Exportar Excel</a></li>
+                        <li><a href="#">Exportar PDF</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box-body table-responsive">
+                <table id="table-list" data-controller="church/members/edit" class="table table-striped"
+                        data-toggle="table"
+                        data-locale="pt-BR"
+                        data-pagination="true"
+                        data-url="/church/members/list"
+                        data-search="true"
+                        data-page-list="[10, 25, 50, 100]"
+                        data-id-field="id"
+                        data-page-size="10"
+                        data-flat="false"
+                        data-detail-view="false"
+                        data-toolbar="#toolbar">
+                    <thead>
+                        <tr>
+                            <th data-field="check" data-checkbox="true"></th>
+                            <th data-width="8%" data-field="id">ID</th>
+                            <th data-field="name" data-sortable="true">Nome</th>
+                            <th data-width="20%" data-formatter="memberStatusFormatter" data-field="status" data-sortable="true">Status</th>
+                            <th data-width="120px" data-align="center" data-formatter="actionsFormatter" data-events="actionsEvents"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer'); %>

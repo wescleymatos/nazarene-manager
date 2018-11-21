@@ -1,0 +1,65 @@
+<%- include('../../partials/header.ejs'); %>
+
+<div class="box box-primary">
+    <form method="POST" action="/admin/users/add">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="" class="control-label"></label>
+                        <select class="form-control" name="church_id">
+                            <% churches.forEach(item => { %>
+                                <option value="<%= item.id %>"><%= item.name %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group label-floating is-empty">
+                        <label for="" class="control-label">Nome</label>
+                        <input class="form-control" type="text" name="nome" required>
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label">Email</label>
+                        <input class="form-control" type="email" name="email" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Tipo</label>
+                        <select class="form-control" name="tipo">
+                            <option value="I">Igreja</option>
+                            <option value="D">Distrito</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label">Senha</label>
+                        <input class="form-control" type="password" name="senha" required minlength="8">
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label">Confirma senha</label>
+                        <input class="form-control" type="password" name="confirmaSenha" required minlength="8">
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+            <a href="javascript:history.back();" class="btn btn-default">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<%- include('../../partials/footer'); %>

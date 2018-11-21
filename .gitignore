@@ -5,6 +5,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+*.bak
+
 # VS Code
 .vscode
 
@@ -61,4 +63,8 @@ typings/
 .env
 
 #node
-package-lock.json
+#package-lock.json
+
+*.min.js
+
+public/js/dist/

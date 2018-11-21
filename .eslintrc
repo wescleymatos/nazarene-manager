@@ -1,7 +1,7 @@
 {
   "rules": {
     "indent": ["error", 2],
-    "complexity": ["error", 2],
+    "complexity": ["error", 4],
     "quotes": ["error", "single"],
     "semi": ["error", "always"]
   },

@@ -7,6 +7,10 @@ const UserMap = (sequelize, DataTypes) => {
     kind: {
       type:   DataTypes.ENUM,
       values: ['A', 'D', 'I']
+    },
+    churchId: {
+      type: DataTypes.INTEGER,
+      field: 'church_id'
     }
   });
 };
